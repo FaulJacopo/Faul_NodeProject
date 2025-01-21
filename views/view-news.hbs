@@ -1,0 +1,53 @@
+{{>header}}
+<div class="pt-24 min-h-screen">
+  <div class="container mx-auto px-4">
+    <a href="/news" class="inline-block mb-6">
+      <button class="px-6 py-2 font-medium transition-colors bg-[#FFB800] hover:bg-[#E5A600] text-black rounded-md">
+        ← Back to News
+      </button>
+    </a>
+
+    <article class="bg-white/10 rounded-lg overflow-hidden">
+      <div class="flex flex-col md:flex-row">
+        <div class="md:w-1/2 relative h-72 md:h-auto">
+          <img 
+            src="{{article.image}}" 
+            alt="{{article.title}}" 
+            class="object-cover w-full h-full"
+          >
+        </div>
+        <div class="md:w-1/2 p-6">
+          <h1 class="text-3xl font-bold text-white mb-4">{{article.title}}</h1>
+          <div class="flex justify-between items-center text-white/60 mb-6">
+            <span>{{article.published_date}}</span>
+            <span>By {{article.author}}</span>
+          </div>
+          <div class="text-white/90 space-y-4 max-h-[60vh] overflow-y-auto pr-4">
+            {{{article.description}}}
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <div class="mt-8 text-center">
+      <a href="/news">
+        <button class="px-6 py-2 font-medium transition-colors bg-[#FFB800] hover:bg-[#E5A600] text-black rounded-md">
+          Back to All News
+        </button>
+      </a>
+    </div>
+  </div>
+</div>
+
+<style>
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-rgb: 30, 30, 30;
+  }
+
+  body {
+    color: rgb(var(--foreground-rgb));
+    background: rgb(var(--background-rgb));
+  }
+</style>
+{{>footer}}

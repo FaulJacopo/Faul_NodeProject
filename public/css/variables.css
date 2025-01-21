@@ -1,0 +1,14 @@
+:root {
+  --foreground-rgb: 255, 255, 255;
+  --background-rgb: 30, 30, 30;
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: rgb(var(--background-rgb));
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+} 

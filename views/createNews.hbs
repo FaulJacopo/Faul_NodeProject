@@ -1,0 +1,79 @@
+{{>header}}
+<div class="pt-24 min-h-screen bg-black">
+  <div class="container mx-auto px-4 max-w-2xl">
+    <h1 class="text-4xl font-bold text-white mb-8">Create News Post</h1>
+
+    <form action="news" method="POST" enctype="multipart/form-data" class="space-y-6 bg-white/10 p-8 rounded-lg backdrop-blur-sm">
+      <div>
+        <label for="newsTitle" class="block text-white mb-2">Title</label>
+        <input 
+          type="text" 
+          id="newsTitle" 
+          name="newsTitle" 
+          class="w-full px-4 py-2 bg-white/10 border border-white/20 rounded-md text-white"
+          required
+        >
+      </div>
+
+      <div>
+        <label for="newsDescription" class="block text-white mb-2">Content</label>
+        <textarea
+          id="newsDescription"
+          name="newsDescription"
+          rows="6"
+          class="w-full px-4 py-2 bg-white/10 border border-white/20 rounded-md text-white"
+          required
+        ></textarea>
+      </div>
+
+      <div>
+        <label for="newsAuthor" class="block text-white mb-2">Author</label>
+        <input 
+          type="text" 
+          id="newsAuthor" 
+          name="newsAuthor" 
+          class="w-full px-4 py-2 bg-white/10 border border-white/20 rounded-md text-white"
+          required
+        >
+      </div>
+
+      <div>
+        <label for="newsImage" class="block text-white mb-2">Image</label>
+        <input
+          type="file"
+          id="newsImage"
+          name="newsImage"
+          accept="image/*"
+          class="w-full px-4 py-2 bg-white/10 border border-white/20 rounded-md text-white"
+          required
+        >
+        <div id="imagePreview" class="mt-4 relative h-48 w-full hidden">
+          <img id="preview" class="object-cover rounded-md w-full h-full" alt="Preview">
+        </div>
+      </div>
+
+      <button type="submit" class="w-full px-4 py-2 rounded-md bg-[#FFB800] text-black hover:bg-[#E5A600]">
+        Create Post
+      </button>
+    </form>
+  </div>
+</div>
+
+<script>
+  const imageInput = document.getElementById('newsImage');
+  const imagePreview = document.getElementById('imagePreview');
+  const preview = document.getElementById('preview');
+
+  imageInput.addEventListener('change', function(e) {
+    const file = e.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onloadend = function() {
+        preview.src = reader.result;
+        imagePreview.classList.remove('hidden');
+      }
+      reader.readAsDataURL(file);
+    }
+  });
+</script>
+{{>footer}}

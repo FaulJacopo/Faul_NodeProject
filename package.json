@@ -1,0 +1,29 @@
+{
+  "name": "sb_riva",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build:css": "tailwindcss -i ./public/css/tailwind.css -o ./public/css/styles.css --watch",
+    "dev": "nodemon main.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "bootstrap": "^5.3.3",
+    "express": "^4.21.2",
+    "express-fileupload": "^1.5.1",
+    "express-session": "^1.18.1",
+    "hbs": "^4.2.0",
+    "multer": "^1.4.5-lts.1",
+    "mysql2": "^3.12.0",
+    "nodemon": "^3.1.9"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.20",
+    "postcss": "^8.5.1",
+    "tailwindcss": "^3.4.17"
+  }
+}

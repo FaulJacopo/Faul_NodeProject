@@ -1,0 +1,69 @@
+{{>header}}
+<div class="pt-24 min-h-screen bg-black">
+  <div class="container mx-auto px-4">
+    <div class="flex justify-between items-center mb-8">
+      <h1 class="text-4xl font-bold text-white">Admin Dashboard</h1>
+      <a href="/admin/news" class="inline-flex items-center justify-center px-4 py-2 rounded-md text-black bg-[#FFB800] hover:bg-[#E5A600]">
+        Create New Post
+      </a>
+    </div>
+
+    <div class="bg-white/15 rounded-lg p-6">
+      <div class="flex mb-6 space-x-4">
+        <button class="px-4 py-2 rounded-md bg-[#FFB800] hover:bg-[#E5A600] text-black" id="dashboardTab">
+          Dashboard
+        </button>
+        <button class="px-4 py-2 rounded-md bg-transparent text-[#FFB800] border-2 border-[#FFB800] hover:bg-[#FFB800] hover:text-black" id="createTab">
+          Create News
+        </button>
+      </div>
+
+      <div id="dashboardContent">
+        <h2 class="text-xl font-semibold text-white mb-4">Recent Posts</h2>
+        <div class="space-y-4">
+          {{#each news}}
+          <div class="flex items-center justify-between p-4 bg-white/5 rounded-lg">
+            <div>
+              <h3 class="text-white font-medium">{{this.title}}</h3>
+              <p class="text-white/60 text-sm">Posted on {{this.published_date}}</p>
+            </div>
+            <div class="space-x-2">
+              {{!-- <button class="px-3 py-1 text-sm rounded-md bg-transparent text-white border border-white hover:bg-white/10">
+                Edit
+              </button> --}}
+              <form action="/admin/news/{{this.id}}" method="post">
+                <button type="submit" class="px-3 py-1 text-sm rounded-md bg-transparent text-[#FFB800] border-2 border-[#FFB800] hover:bg-[#FFB800] hover:text-black">
+                  Delete
+                </button>
+              </form>
+            </div>
+          </div>
+          {{/each}}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{{>footer}}
+
+<script>
+  const dashboardTab = document.getElementById('dashboardTab');
+  const createTab = document.getElementById('createTab');
+  const dashboardContent = document.getElementById('dashboardContent');
+
+  dashboardTab.addEventListener('click', () => {
+    dashboardTab.classList.remove('bg-transparent', 'text-white', 'border', 'border-white');
+    dashboardTab.classList.add('bg-white', 'text-black');
+    createTab.classList.add('bg-transparent', 'text-white', 'border', 'border-white');
+    createTab.classList.remove('bg-white', 'text-black');
+    window.location.href = '/admin/dashboard';
+  });
+
+  createTab.addEventListener('click', () => {
+    createTab.classList.remove('bg-transparent', 'text-white', 'border', 'border-white');
+    createTab.classList.add('bg-white', 'text-black');
+    dashboardTab.classList.add('bg-transparent', 'text-white', 'border', 'border-white');
+    dashboardTab.classList.remove('bg-white', 'text-black');
+    window.location.href = '/admin/news';
+  });
+</script>
